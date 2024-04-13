@@ -1,6 +1,7 @@
 package Firma_Transport_ADR.Vehicule;
 
 import Firma_Transport_ADR.Angajati.Sofer;
+import Firma_Transport_ADR.Tahograf.Tahograf;
 
 import java.util.*;
 
@@ -9,12 +10,15 @@ public class Camion extends Vehicul{
     private int capacitate_motor;
     private String culoare;
     private List<Sofer> soferi;
+    private Tahograf tahograf;
+
 
     public Camion(String marca, String numarInmatriculare, int an, int km, String culoare, int capacitate_motor) {
         super(marca, numarInmatriculare, an, km);
         this.culoare = culoare;
         this.capacitate_motor = capacitate_motor;
         this.soferi = new ArrayList<>();
+        this.tahograf = new Tahograf();
     }
 
     public int getCapacitate_motor() {
@@ -23,6 +27,18 @@ public class Camion extends Vehicul{
 
     public String getCuloare() {
         return this.culoare;
+    }
+
+    public List<Sofer> getSoferi() {
+        return soferi;
+    }
+
+    public Tahograf getTahograf() {
+        return tahograf;
+    }
+
+    public void setTahograf(Tahograf tahograf) {
+        this.tahograf = tahograf;
     }
 
     public void adaugaSofer(Sofer sofer) {
@@ -54,4 +70,10 @@ public class Camion extends Vehicul{
             System.out.println("\tNiciun sofer pe acest camion.");
         }
     }
+
+    @Override
+    public String toString() {
+        return "{" + marca + ", [" + numarInmatriculare + "], " + capacitate_motor + ", " + culoare + ", " + an + ", " + km + "}";
+    }
+
 }
